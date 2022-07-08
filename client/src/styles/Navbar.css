@@ -1,0 +1,21 @@
+.navbar-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    height: 60px;
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo {
+    justify-content: center;
+}
+
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -1,0 +1,38 @@
+.postCard {
+    display: grid;
+    align-items: center;
+    border: 1px solid #dbdbdb;
+    border-radius: 7px;
+    margin-block: 25px;
+    background-color: white;
+}
+
+.postCard button {
+    height: 20px;
+}
+
+.post-card-buttons {
+    display: flex;
+    margin: 12px;
+    gap: 5px
+}
+
+.post-card-image {
+    max-width: 470px;
+    max-height: 470px;
+}
+
+.post-card-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-card-avatar {
+    max-width: 32px;
+    max-height: 32px;
+    margin-inline: 12px;
+}
+
+.post-card-description {
+    margin-inline: 12px;
+}

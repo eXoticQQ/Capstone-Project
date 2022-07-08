@@ -1,24 +1,17 @@
-# README
+# Project Template: React/Rails API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pitch
+This project is a clone of Instagram. This project will be able to do the following...
 
-Things you may want to cover:
+- A user can login
+- Post a photo CRUD
+- Comment on a photo CRUD
+- Like a photo
 
-* Ruby version
+## Schema
+<img width="1065" alt="image" src="https://user-images.githubusercontent.com/37206824/167017135-fc52efb2-d494-41fa-895c-e487c0cdb104.png">
 
-* System dependencies
 
-* Configuration
+## Description
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is the front end portion of a Flatiron capstone project that utilizes a rails backend api. https://github.com/Mike-Tran/instagram_clone_frontend
