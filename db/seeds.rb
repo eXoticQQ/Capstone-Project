@@ -39,9 +39,18 @@ posts_array.each do |array|
 end
 
 puts "Creating comments..."
-c1 = Comment.create(likes: 3, comment: Faker::Lorem.sentence, post: Post.first)
-c2 = Comment.create(likes: 4, comment: Faker::Lorem.sentence, post: Post.first)
-c3 = Comment.create(likes: 5, comment: Faker::Lorem.sentence, post: Post.first)
+comments_array = [
+    [ 3, Faker::Lorem.sentence, Post.first]
+    [ 4, Faker::Lorem.sentence, Post.second]
+    [ 5, Faker::Lorem.sentence, Post.first]
+]
+comments_array.each do |array|
+    Comment.create(likes: array[0], comment: array[1], post: array[2])
+end
+
+# c1 = Comment.create(likes: 3, comment: Faker::Lorem.sentence, post: Post.first)
+# c2 = Comment.create(likes: 4, comment: Faker::Lorem.sentence, post: Post.first)
+# c3 = Comment.create(likes: 5, comment: Faker::Lorem.sentence, post: Post.first)
 
 puts "Creating followers..."
 f1 = UserFollower.create(user_id: user1.id, follower_id: user2.id)
