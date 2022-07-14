@@ -14,4 +14,3 @@ This project is a clone of Instagram. This project will be able to do the follow
 
 ## Description
 
-This project is the front end portion of a Flatiron capstone project that utilizes a rails backend api. https://github.com/Mike-Tran/instagram_clone_frontend
