@@ -21,6 +21,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def show_posts
+        user = User.find(params[:id])
+        render json: user.see_users_posts, status: :ok
+    end
+
     private
 
     def user_params

@@ -1,7 +1,12 @@
-require 'pry'
 class PostsController < ApplicationController
+
+    skip_before_action :authorize, only: [:create]
+
     def index
-        render json: Post.all
+        posts = Post.all.each do |post|
+            post.trending_posts
+        end
+        render json: posts, status: :ok
     end
 
     def show
@@ -26,10 +31,10 @@ class PostsController < ApplicationController
         head :no_content
     end
 
-    def trending_posts
-       posts = Post.all.order(created_at: :desc)
-       render json: posts, status: :ok
-    end
+    # def trending_posts
+    #    posts = Post.all.order(created_at: :desc)
+    #    render json: posts, status: :ok
+    # end
 
     private
 

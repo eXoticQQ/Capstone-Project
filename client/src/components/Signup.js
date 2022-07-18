@@ -26,6 +26,7 @@ export default function Signup({setCurrentUser}) {
     fetch('/users', {
       method: 'POST',
       headers: {
+        // Authorization: `Bearer ${localStorage.token}`,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },

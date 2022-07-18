@@ -1,8 +1,11 @@
 import instagram_logo from "../assets/instagram_logo.png"
 import '../styles/Navbar.css';
 import { Button, Input } from "../styles"
+import { useSelector } from "react-redux";
 
-function Navbar({user, logOut, loggedIn}) {
+function Navbar({ logOut, loggedIn}) {
+    const user = useSelector(state => state.user.value)
+    // console.log(user)
     return (
         <div className="navbar-container">
             <div className="navbar-logo">

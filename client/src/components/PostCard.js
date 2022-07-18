@@ -3,6 +3,8 @@ import avatar from "../assets/avatar.png";
 import "../styles/PostCard.css";
 
 function PostCard({ post, handleDeletePost, handleLike, user }) {
+  
+
   return (
     <div className="postCard">
       <div className="post-card-header">

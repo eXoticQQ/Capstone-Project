@@ -1,6 +1,6 @@
 import Login from "./Login";
 import Posts from "./Posts"
-// import Signup from "./Signup"
+
 
 function Home({setCurrentUser, user, loggedIn, handleDeletePost, posts, handleSubmitPost, handleLike}) {
     if (!loggedIn) {
@@ -8,7 +8,6 @@ function Home({setCurrentUser, user, loggedIn, handleDeletePost, posts, handleSu
           <>
             <Login setCurrentUser={setCurrentUser} />
             {/* <button onClick={routeChange}>Sign up</button> */}
-            {/* <Signup /> */}
           </>
         )
     } else {

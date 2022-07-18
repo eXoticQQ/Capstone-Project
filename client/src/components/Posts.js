@@ -6,6 +6,7 @@ import { Input } from "../styles"
 
 function Posts({user, handleDeletePost, handleSubmitPost, handleLike, posts}) {
     const [newPost, setNewPost] = useState("");
+    
     return (
         <div className="Posts">
           <form onSubmit={handleSubmitPost} id="post_form">
@@ -23,7 +24,7 @@ function Posts({user, handleDeletePost, handleSubmitPost, handleLike, posts}) {
                 post={post}
                 handleDeletePost={handleDeletePost}
                 handleLike={handleLike}
-                user={user.username}
+                user={post.user.username}
               />
           ))}
         </div>

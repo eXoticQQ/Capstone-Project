@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '../styles/App.css';
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from './stores/user';
 
 import Signup from './Signup';
 import Home from './Home';
@@ -10,11 +12,24 @@ function App() {
   const [user, setUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch()
+
+const allPosts = async () => {
+     let response = await fetch(`/posts`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    setPosts([...response])
+  }
 
   function setCurrentUser(currentUser) {
     setUser(currentUser);
     setLoggedIn(true);
-    setPosts(currentUser.posts)
+    allPosts()
   }
 
   function logOut() {
@@ -91,6 +106,7 @@ function App() {
         .then((r) => r.json())
         .then((user) => {
           setCurrentUser(user)
+          dispatch(setUserInfo(user))
         });
     } else {
       console.log('No token found, try logging in!');
@@ -102,7 +118,7 @@ function App() {
       {loggedIn ? <Navbar user={user} logOut={logOut} loggedIn={loggedIn} /> : null}
       <div className='main-container'>
         <Routes>
-          <Route path="/" element={<Home setCurrentUser={setCurrentUser} user={user} loggedIn={loggedIn} handleDeletePost={handleDeletePost} posts={posts} handleSubmitPost={handleSubmitPost} handleLike={handleLike}  />}/>
+          <Route path="/" element={<Home allPosts={allPosts} setCurrentUser={setCurrentUser} user={user} loggedIn={loggedIn} handleDeletePost={handleDeletePost} posts={posts} handleSubmitPost={handleSubmitPost} handleLike={handleLike}  />}/>
           <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}/>
         </Routes>
       </div>

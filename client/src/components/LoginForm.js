@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button, Error, Input, FormField } from "../styles";
 // import Signup from "./Signup"
 import { Link} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from './stores/user';
 
 const loginAPI_dev = '/login';
 
@@ -10,6 +12,7 @@ function LoginForm({setCurrentUser}) {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -26,6 +29,7 @@ function LoginForm({setCurrentUser}) {
             r.json().then((response) => {
               localStorage.token = response.jwt;
               setCurrentUser(response.user);
+              dispatch(setUserInfo(response.user))
             });
           } else {
             r.json().then((err) => setErrors(err.message));
@@ -40,7 +44,7 @@ function LoginForm({setCurrentUser}) {
               type="text"
               id="username"
               autoComplete="off"
-              placeholder='Email'
+              placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
