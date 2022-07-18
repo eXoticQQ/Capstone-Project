@@ -1,5 +1,6 @@
 import instagram_logo from "../assets/instagram_logo.png"
 import '../styles/Navbar.css';
+import { Button, Input } from "../styles"
 
 function Navbar({user, logOut, loggedIn}) {
     return (
@@ -8,12 +9,12 @@ function Navbar({user, logOut, loggedIn}) {
                 <img src={instagram_logo} alt="instagram logo"></img>
             </div>
             <div className="navbar-search">
-                <input type="text"></input>
+                <Input type="text"></Input>
             </div>
             <div className="navbar-buttons">
                 <img src={user.image} alt=""></img>
                 <h2>{user ? user.username : ' '}</h2>
-                {loggedIn ? <button onClick={logOut}> LogOut </button> : ''}
+                {loggedIn ? <Button onClick={logOut}> Log Out </Button> : ''}
             </div>
 
         </div>

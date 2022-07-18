@@ -26,6 +26,11 @@ class PostsController < ApplicationController
         head :no_content
     end
 
+    def trending_posts
+       posts = Post.all.order(created_at: :desc)
+       render json: posts, status: :ok
+    end
+
     private
 
     def find_post

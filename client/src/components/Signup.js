@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Button, FormField, Input } from "../styles";
 
 
 export default function Signup({setCurrentUser}) {
@@ -8,6 +9,7 @@ export default function Signup({setCurrentUser}) {
   const [email, setEmail] = useState('');
   const [created, setCreated] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const isLoading = useState(false);
 
   let navigate = useNavigate();
 
@@ -35,7 +37,7 @@ export default function Signup({setCurrentUser}) {
           setCreated(true);
           setErrorMessage('');
           setCurrentUser(response.user)
-          navigate("/");
+          navigate("/?");
         }
       })
       .catch((response) =>
@@ -56,29 +58,34 @@ export default function Signup({setCurrentUser}) {
           </div>
           <br />
           <form onSubmit={createUser}>
-            <input
+            <FormField>
+            <Input
               type="text"
               name="email"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <br />
-            <input
+            </FormField>
+            <FormField>
+            <Input
               type="text"
               name="username"
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
-            <br />
-            <input
+            </FormField>
+            <FormField>
+            <Input
               type="password"
               name="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <br />
-            <br />
-            <button type="submit">Submit</button>
+            </FormField>
+            <Button variant="fill" color="primary" type="submit">
+              {isLoading ? "SignUp" : <Signup/>}
+            </Button>
+            {/* <button type="submit">Submit</button> */}
           </form>
         </div>
       )}

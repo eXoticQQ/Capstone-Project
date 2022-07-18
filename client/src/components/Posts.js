@@ -1,6 +1,7 @@
 import PostCard from './PostCard';
 import React, { useState } from 'react';
 import '../styles/Posts.css';
+import { Input } from "../styles"
 
 
 function Posts({user, handleDeletePost, handleSubmitPost, handleLike, posts}) {
@@ -8,13 +9,13 @@ function Posts({user, handleDeletePost, handleSubmitPost, handleLike, posts}) {
     return (
         <div className="Posts">
           <form onSubmit={handleSubmitPost} id="post_form">
-            <input 
+            <Input 
                 className='post-input'
                 type="text" 
                 placeholder="New post"
                 value={newPost}
                 onChange={(e) => setNewPost(e.target.value)}
-            ></input>
+            ></Input>
           </form>
           {posts.slice(0).reverse().map((post) => (
               <PostCard

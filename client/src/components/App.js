@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '../styles/App.css';
 
@@ -54,8 +54,7 @@ function App() {
     
     document.getElementById('post_form').reset();
     // e.preventDefault();
-    // e.target.reset();
-
+    e.target.reset();
   }
 
   function handleLike(likePost) {

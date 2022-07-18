@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Error, Input, FormField } from "../styles";
+// import Signup from "./Signup"
+import { Link} from 'react-router-dom'
 
 const loginAPI_dev = '/login';
 
@@ -61,6 +63,13 @@ function LoginForm({setCurrentUser}) {
           <FormField>
               {(errors !== "") ? <Error key={errors}>{errors}</Error> : null }
           </FormField>
+          <Link to="/signup">
+          <Button variant="fill" color="primary" type="submit">Sign Up</Button>
+          {/* <Button variant="fill" color="primary" type="submit">
+              {isLoading ? "Loading..." : <Signup/>}
+            </Button> */}
+          </Link>
+          
         </form>
       );
 }

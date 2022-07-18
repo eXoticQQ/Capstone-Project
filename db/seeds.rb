@@ -40,8 +40,8 @@ end
 
 puts "Creating comments..."
 comments_array = [
-    [ 3, Faker::Lorem.sentence, Post.first]
-    [ 4, Faker::Lorem.sentence, Post.second]
+    [ 3, Faker::Lorem.sentence, Post.first],
+    [ 4, Faker::Lorem.sentence, Post.second],
     [ 5, Faker::Lorem.sentence, Post.first]
 ]
 comments_array.each do |array|
