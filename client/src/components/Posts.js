@@ -4,7 +4,7 @@ import '../styles/Posts.css';
 import { Input } from "../styles"
 
 
-function Posts({user, handleDeletePost, handleSubmitPost, handleLike, posts}) {
+function Posts({ handleDeletePost, handleSubmitPost, handleLike, posts}) {
     const [newPost, setNewPost] = useState("");
     
     return (

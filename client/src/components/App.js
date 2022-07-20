@@ -23,6 +23,8 @@ const allPosts = async () => {
       },
     })
     .then((response) => response.json())
+    // debugger
+    // console.log(response)
     setPosts([...response])
   }
 
