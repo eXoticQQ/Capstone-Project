@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-    skip_before_action :authorize, only: [:create]
+    # skip_before_action :authorize, only: [:create]
+    before_action :authorize, except: [:new, :create]
 
     def index
         posts = Post.all.each do |post|

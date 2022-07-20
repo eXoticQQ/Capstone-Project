@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-    skip_before_action :authorize, only: :create
+    # skip_before_action :authorize, only: :create
+    before_action :authorize, except: [:new, :create]
 
     def index
         @users = User.all
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create!(user_params)
         if @user.valid?
+            SignupMailer.with(user: @user).signup_email.deliver_now
             render json: { user: @user, status: :created}
         else
             render json: { error: 'failed to create user', status: :not_acceptable}
@@ -29,6 +31,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :email)
     end
 end

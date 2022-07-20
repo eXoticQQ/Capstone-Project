@@ -73,6 +73,17 @@ const allPosts = async () => {
     // e.preventDefault();
     e.target.reset();
   }
+  
+  // function handleEditPost(postToEdit) {
+  //   fetch(`/posts/${postToEdit.id}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.token}`
+  //     }
+  //   });
+  //   setPosts(posts.filter((p) => p.id !== postToDelete.id))
+
+  // }
 
   function handleLike(likePost) {
     fetch(`/posts/${likePost.id}`, {
