@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create]
   post '/login', to: 'authentication#login'
   post '/auto_login', to: 'authentication#auto_login'
+  get '/self_posts/:id', to: 'users#show_posts'
 
   get '/login', to: 'login#new'
   get '/login', to: 'login#create'

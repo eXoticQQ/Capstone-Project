@@ -26,7 +26,7 @@ export default function Signup({setCurrentUser}) {
     fetch('/users', {
       method: 'POST',
       headers: {
-        // Authorization: `Bearer ${localStorage.token}`,
+        Authorization: `Bearer ${localStorage.token}`,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
@@ -86,7 +86,6 @@ export default function Signup({setCurrentUser}) {
             <Button variant="fill" color="primary" type="submit">
               {isLoading ? "SignUp" : <Signup/>}
             </Button>
-            {/* <button type="submit">Submit</button> */}
           </form>
         </div>
       )}

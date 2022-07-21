@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def show_posts
-        user = User.find(params[:id])
+        user = User.find_by(id: params[:id])
         render json: user.see_users_posts, status: :ok
     end
 

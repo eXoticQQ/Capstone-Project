@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-    # skip_before_action :authorize, only: [:create]
-    before_action :authorize, except: [:new, :create]
+    skip_before_action :authorize, only: [:create]
+    # before_action :authorize, except: [:new, :create]
 
     def index
         posts = Post.all.each do |post|
@@ -32,10 +32,7 @@ class PostsController < ApplicationController
         head :no_content
     end
 
-    # def trending_posts
-    #    posts = Post.all.order(created_at: :desc)
-    #    render json: posts, status: :ok
-    # end
+
 
     private
 

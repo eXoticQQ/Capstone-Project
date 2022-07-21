@@ -7,6 +7,7 @@ import { setUserInfo } from './stores/user';
 import Signup from './Signup';
 import Home from './Home';
 import Navbar from './Navbar';
+import SelfPosts from './SelfPosts';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -14,7 +15,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const dispatch = useDispatch()
 
-const allPosts = async () => {
+  const allPosts = async () => {
      let response = await fetch(`/posts`, {
       headers: {
         Authorization: `Bearer ${localStorage.token}`,
@@ -23,8 +24,6 @@ const allPosts = async () => {
       },
     })
     .then((response) => response.json())
-    // debugger
-    // console.log(response)
     setPosts([...response])
   }
 
@@ -34,12 +33,7 @@ const allPosts = async () => {
     allPosts()
   }
 
-  function logOut() {
-    setUser({});
-    setLoggedIn(false);
-    setPosts([]);
-    localStorage.token = '';
-  }
+  
 
   function handleDeletePost(postToDelete) {
     fetch(`/posts/${postToDelete.id}`, {
@@ -73,17 +67,9 @@ const allPosts = async () => {
     // e.preventDefault();
     e.target.reset();
   }
-  
-  // function handleEditPost(postToEdit) {
-  //   fetch(`/posts/${postToEdit.id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.token}`
-  //     }
-  //   });
-  //   setPosts(posts.filter((p) => p.id !== postToDelete.id))
 
-  // }
+
+  
 
   function handleLike(likePost) {
     fetch(`/posts/${likePost.id}`, {
@@ -128,10 +114,11 @@ const allPosts = async () => {
 
   return (
     <Router>
-      {loggedIn ? <Navbar user={user} logOut={logOut} loggedIn={loggedIn} /> : null}
+      {loggedIn ? <Navbar allPosts={allPosts} user={user} loggedIn={loggedIn} setUser={setUser} setLoggedIn={setLoggedIn} setPosts={setPosts} posts={posts} /> : null}
       <div className='main-container'>
         <Routes>
-          <Route path="/" element={<Home allPosts={allPosts} setCurrentUser={setCurrentUser} user={user} loggedIn={loggedIn} handleDeletePost={handleDeletePost} posts={posts} handleSubmitPost={handleSubmitPost} handleLike={handleLike}  />}/>
+          <Route path="/" element={<Home allPosts={allPosts} setCurrentUser={setCurrentUser} user={user} loggedIn={loggedIn} handleDeletePost={handleDeletePost} posts={posts} handleSubmitPost={handleSubmitPost} handleLike={handleLike}  /> }/>
+          <Route path="self_posts" element={<SelfPosts loggedIn={loggedIn} user={user} handleDeletePost={handleDeletePost} setUser={setUser} setLoggedIn={setLoggedIn} setPosts={setPosts} handleLike={handleLike} posts={posts}/>}/>
           <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}/>
         </Routes>
       </div>

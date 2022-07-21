@@ -2,13 +2,11 @@ import placeholder from "../assets/Placeholder.jpeg";
 import avatar from "../assets/avatar.png";
 import "../styles/PostCard.css";
 import { v4 as uuidv4 } from "uuid"
-import { useSelector } from "react-redux";
 
 
 
 
-function PostCard({ post, handleDeletePost, handleLike, user }) {
-  const currentUser = useSelector(state => state.user.value)
+function selfPostCard({ post, handleDeletePost, handleLike, user }) {
 
   return (
     <div className="postCard">
@@ -24,9 +22,9 @@ function PostCard({ post, handleDeletePost, handleLike, user }) {
       ></img>
 
       <div className="post-card-buttons">
-        {currentUser.username === post.user.username? <button className="deleteButton" onClick={() => handleDeletePost(post)}>
+        <button className="deleteButton" onClick={() => handleDeletePost(post)}>
           X
-        </button>: null}
+        </button>
         <button className="likeButton" onClick={() => handleLike(post)}>
           Like
         </button>
@@ -43,4 +41,4 @@ function PostCard({ post, handleDeletePost, handleLike, user }) {
   );
 }
 
-export default PostCard;
+export default selfPostCard;

@@ -1,18 +1,48 @@
 import instagram_logo from "../assets/instagram_logo.png"
 import '../styles/Navbar.css';
-import { Button, Input } from "../styles"
+import { Button } from "../styles"
 import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 
-function Navbar({ logOut, loggedIn}) {
+
+function Navbar({ loggedIn, setUser, setPosts, setLoggedIn, allPosts }) {
     const user = useSelector(state => state.user.value)
-    // console.log(user)
+    const navigate = useNavigate()
+    const selfPosts = async () => {
+        let response = await fetch(`/self_posts/${user.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.token}`,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+        })
+        .then((response) => response.json())
+        setPosts(response)
+    }
+
+    function logOut() {
+        setUser({});
+        setLoggedIn(false);
+        setPosts([]);
+        localStorage.token = '';
+        navigate("/");
+      }
+    
+
+
     return (
         <div className="navbar-container">
             <div className="navbar-logo">
                 <img src={instagram_logo} alt="instagram logo"></img>
             </div>
-            <div className="navbar-search">
-                <Input type="text"></Input>
+            <div>
+                <NavLink to="/self_posts" onClick={selfPosts} >
+                    Your posts
+                </NavLink>
+                <br></br>
+                <NavLink to="/" onClick={allPosts}>
+                    All Posts
+                </NavLink>
             </div>
             <div className="navbar-buttons">
                 <img src={user.image} alt=""></img>

@@ -7,7 +7,6 @@ function Home({setCurrentUser, user, loggedIn, handleDeletePost, posts, handleSu
         return (
           <>
             <Login setCurrentUser={setCurrentUser} />
-            {/* <button onClick={routeChange}>Sign up</button> */}
           </>
         )
     } else {
