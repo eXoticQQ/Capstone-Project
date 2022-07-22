@@ -118,7 +118,7 @@ function App() {
       <div className='main-container'>
         <Routes>
           <Route path="/" element={<Home allPosts={allPosts} setCurrentUser={setCurrentUser} user={user} loggedIn={loggedIn} handleDeletePost={handleDeletePost} posts={posts} handleSubmitPost={handleSubmitPost} handleLike={handleLike}  /> }/>
-          <Route path="self_posts" element={<SelfPosts loggedIn={loggedIn} user={user} handleDeletePost={handleDeletePost} setUser={setUser} setLoggedIn={setLoggedIn} setPosts={setPosts} handleLike={handleLike} posts={posts}/>}/>
+          <Route path="self_posts" element={<SelfPosts  loggedIn={loggedIn} user={user} handleDeletePost={handleDeletePost} setUser={setUser} setLoggedIn={setLoggedIn} setPosts={setPosts} handleLike={handleLike} posts={posts}/>}/>
           <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}/>
         </Routes>
       </div>

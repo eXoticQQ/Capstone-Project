@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 
 
-function SelfPosts({ user, posts, loggedIn, setPosts}) {
+function SelfPosts({ user, posts, handleLike, setPosts, handleDeletePost}) {
 
     useEffect(() => {
         const fetchSelfPosts = async () => {
@@ -27,6 +27,8 @@ function SelfPosts({ user, posts, loggedIn, setPosts}) {
                   <SelfPostCard
                     key={post.id}
                     post={post}
+                    handleDeletePost={handleDeletePost}
+                    handleLike={handleLike}
                     user={post.user.username}
                   />
                 ))}
